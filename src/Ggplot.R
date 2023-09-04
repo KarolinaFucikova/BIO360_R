@@ -106,21 +106,17 @@ ggbarplot(
   color = "origin",
   position = position_dodge(0.8)) 
 
-ggbarplot(
-  Kalske, x = "inoc", y = "G.leaves3", 
-  add = "mean_ci", 
-  add = "jitter",
-  color = "origin",
-  position = position_dodge(0.8)) 
 
 
 ############################
+# play around with the following code; annotate it as you figure out what it does
 # some exploration of Martinez-Curci data
 #  using palettes
 library(RColorBrewer)
 display.brewer.all(colorblindFriendly = T)
 
 birds <- read.csv("data/Shorebirds_PreyIntake.csv", sep=';')
+inverts <- read.csv("data/Benthic_AbundanceAndBiomass.csv", sep=';')
 head(birds)
 birds$Period<-as.factor(birds$Period)
 
@@ -138,9 +134,11 @@ ggplot(data = birds, aes(x = f1f2, y = PreyPerMinute)) +
   geom_boxplot(alpha = 0) +
   geom_jitter(alpha = 0.5, color = "tomato")
 
+# try some more for the invertebrate data
 ggline(inverts, x = "Period", y = "Total_Biomass", color = "Treatment",
        add = c("mean_se", "jitter"))
 
+# additional resources:
 # https://www.datanovia.com/en/blog/how-to-easily-create-barplots-with-error-bars-in-r/
 # https://rpkgs.datanovia.com/ggpubr/reference/ggbarplot.html
 
