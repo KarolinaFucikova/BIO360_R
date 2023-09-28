@@ -2,6 +2,8 @@
 # if you organized your project exactly, we won't have to look for them
 # they are in the folder called 'data', right here in the same folder where the R project is
 BIO360_seeds <- read.csv("data/seeds.csv")
+BIO360_seeds
+head(BIO360_seeds)
 
 # you can click on the seeds object in the environment quadrant on the right
 # to see what it looks like in spreadsheet form
@@ -9,11 +11,12 @@ BIO360_seeds <- read.csv("data/seeds.csv")
 
 # let's try some different data visualization/exploration graphs)
 boxplot(BIO360_seeds$maple)
+boxplot(BIO360_seeds)
 # what do you think the $ does in BIO360_seeds$maple ?
 # what happened when you ran the line?
 # we will learn more graphing tricks later; now try:
 
-hist(BIO360_seeds$maple)
+hist(BIO360_seeds$elm2)
 # now make a histogram for each of the remaining columns
 # do the data look normally distributed?
 
@@ -32,7 +35,7 @@ var(BIO360_seeds$maple,na.rm=TRUE)
 # let's try to look at the first tab of the Talal supplementary Table 1
 # it is saved in your data folder as Talal_plant_comm_comp.csv
 # import it into R by completing the next line:
-BIO360_Talal <- read.csv("...")
+BIO360_Talal <- read.csv("data/Talal_plant_comm_comp.csv")
 
 # One thing that R does not handle well is extra columns and rows that do not contain data
 # which is why we will learn to subset the data first
