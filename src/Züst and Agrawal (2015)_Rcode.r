@@ -38,6 +38,27 @@ mod <- lm(RGR.ma~Card.tot, data=d.gen)
 plot(RGR.ma~Card.tot, data=d.gen)
 abline(mod)
 
+mod <- lm(Card.tot~C.N, data=d.gen)
+plot(Card.tot~C.N, data=d.gen)
+abline(mod)
+
+mod <- lm(RGR.mp~C.N, data=d.gen)
+plot(RGR.mp~C.N, data=d.gen)
+abline(mod)
+
+# growth rate as a function of toxicity (apolar card.)
+mod <- lm(RGR.mp~Card.apo, data=d.gen) # generalist species
+plot(RGR.mp~Card.apo, data=d.gen)
+abline(mod)
+
+mod <- lm(RGR.an~Card.apo, data=d.gen) # broad specialist species
+plot(RGR.an~Card.apo, data=d.gen)
+abline(mod)
+
+mod <- lm(RGR.ma~Card.apo, data=d.gen) # monophagous specialist species
+plot(RGR.ma~Card.apo, data=d.gen)
+abline(mod)
+
 # aphid data
 boxplot(Juvenile~Genotype*Species, data=d.aph, col="skyblue")
 boxplot(Juvenile~Species, data=d.aph)
