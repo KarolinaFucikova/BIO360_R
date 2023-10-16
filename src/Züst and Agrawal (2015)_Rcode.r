@@ -26,10 +26,41 @@ d.gen <-read.table("data/Zust_Genotype means.txt", header=T)
 
 ## define numeric Genotype identifier as factor
 d.aph$Genotype<-as.factor(d.aph$Genotype)
+head(d.aph)
+head(d.pl)
+head(d.che)
+head(d.gen)
 
 # trying some raw graphing
-boxplot(Juvenile~Genotype*Species, data=d.aph)
+# genotype means data first
+boxplot(Card.tot~Genotype, data=d.gen)
+mod <- lm(RGR.ma~Card.tot, data=d.gen)
+plot(RGR.ma~Card.tot, data=d.gen)
+abline(mod)
+
+# aphid data
+boxplot(Juvenile~Genotype*Species, data=d.aph, col="skyblue")
 boxplot(Juvenile~Species, data=d.aph)
+boxplot(Sum~Species, data=d.aph)
+boxplot(Sum~Genotype, data=d.aph)
+# subsetting only for some genotypes
+# boxplot(Juvenile~Genotype, data=d.aph, subset=Genotype %in% c(1,2))
+#boxplot(Juvenile~Genotype*Species, data=d.aph, frame = FALSE,
+#        col = c("#00AFBB", "#E7B800"), ylab="Juvenile aphids")
+dev.off()
+# the above clears plot panel settings if needed (they are set later in the code)
+interaction.plot(x.factor = d.aph$Census, trace.factor = d.aph$Species, 
+                 response = d.aph$Sum, fun = mean, 
+                 type = "b", legend = TRUE, 
+                 xlab = "Census Times", ylab="Total aphid count",
+                 pch=c(1,4,8,19), col = c("#00AFBB", "#E7B800", "gray", "black"))
+
+interaction.plot(x.factor = d.aph$Census, trace.factor = d.aph$Genotype, 
+                 response = d.aph$Sum, fun = mean, 
+                 type = "b", legend = FALSE, 
+                 xlab = "Census Times", ylab="Total aphid count",
+                 pch=c(1,19))
+
 
 ### remove replicates with problematic growth patterns
 # M.asc : 17
