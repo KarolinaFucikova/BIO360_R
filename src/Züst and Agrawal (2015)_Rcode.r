@@ -39,11 +39,7 @@ plot(RGR.ma~Card.tot, data=d.gen)
 abline(mod)
 
 mod <- lm(Card.tot~C.N, data=d.gen)
-plot(Card.tot~C.N, data=d.gen)
-abline(mod)
-
-mod <- lm(RGR.mp~C.N, data=d.gen)
-plot(RGR.mp~C.N, data=d.gen)
+plot(Card.tot~C.N, data=d.gen, pch=19, col="tomato", xlab="C:N ratio", ylab="Total Cardenolides")
 abline(mod)
 
 # growth rate as a function of toxicity (apolar card.)
