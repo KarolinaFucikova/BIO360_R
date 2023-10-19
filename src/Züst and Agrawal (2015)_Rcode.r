@@ -44,16 +44,21 @@ abline(mod)
 
 # growth rate as a function of toxicity (apolar card.)
 mod <- lm(RGR.mp~Card.apo, data=d.gen) # generalist species
-plot(RGR.mp~Card.apo, data=d.gen)
+plot(RGR.mp~Card.apo, data=d.gen, col="coral", xlab="Apolar Cardenolides", ylab="M. persicae growth rate", pch=19)
 abline(mod)
 
 mod <- lm(RGR.an~Card.apo, data=d.gen) # broad specialist species
-plot(RGR.an~Card.apo, data=d.gen)
+plot(RGR.an~Card.apo, data=d.gen, col="coral", xlab="Apolar Cardenolides", ylab="A. nerii growth rate", pch=19)
 abline(mod)
 
 mod <- lm(RGR.ma~Card.apo, data=d.gen) # monophagous specialist species
-plot(RGR.ma~Card.apo, data=d.gen)
+plot(RGR.ma~Card.apo, data=d.gen, col="coral", xlab="Apolar Cardenolides", ylab="M. asclepiadis growth rate", pch=19)
 abline(mod)
+
+library("ggplot2")
+ggplot(data=d.gen, aes(x=Card.apo, y=RGR.ma)) +
+  geom_point() +
+  geom_smooth(method=lm , color="coral", fill="#69b3a2", se=TRUE)
 
 # aphid data
 boxplot(Juvenile~Genotype*Species, data=d.aph, col="skyblue")

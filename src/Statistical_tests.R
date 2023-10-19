@@ -13,6 +13,7 @@ boxplot(seeds2, col = c("coral", "gray"), names = c("Maple seeds", "Elm seeds"),
 #barplot(seed_means)
 
 wilcox.test(seeds$maple,seeds$elm)
+boxplot(seeds[,1:2], xlab="Species", ylab="Dispersal (cm)")
 
 sward2 <- read.csv("data/sward2.csv")
 boxplot(Height~Site, data=sward2, col =c("coral", "gray", "tan"))
