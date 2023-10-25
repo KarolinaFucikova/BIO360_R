@@ -1,10 +1,19 @@
+# nifty trick to clear environment if saved accidentally:
+rm(list = ls())
+
+# competition and mycorrhizae experiments
 comp <- read.csv("data/BIO360Competition.csv")
 myco <- read.csv("data/BIO360Mycorrhizae.csv")
 
 head(comp)
 head(myco)
 
+# analyzing with 2-factor ANOVA for all  response variables respectively.
+# graphing each response variable with a boxplot
+# Tukey tests not conducted for most
+
 # competition data
+
 comp.aov <- aov(Total_length~Competition*Nitrogen, data=comp, na.rm=TRUE)
 summary(comp.aov)
 boxplot(Total_length~Competition*Nitrogen, data=comp)
@@ -15,7 +24,9 @@ boxplot(Shoot_length~Competition*Nitrogen, data=comp)
 
 comp.aov <- aov(Root_length~Competition*Nitrogen, data=comp, na.rm=TRUE)
 summary(comp.aov)
+TukeyHSD(comp.aov)
 boxplot(Root_length~Competition*Nitrogen, data=comp)
+# nitrogen makes a difference in the no-competition treatment
 
 comp.aov <- aov(Total_mass~Competition*Nitrogen, data=comp, na.rm=TRUE)
 summary(comp.aov)
