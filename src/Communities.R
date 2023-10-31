@@ -5,6 +5,7 @@ plant <- read.csv("data/plant_list.csv")
 plants <- table(plant$Species, plant$Site)
 colSums(hornbill)
 colSums(plants)
+specnumber(t(hornbill))
 
 # can use base R function dist, or vegan package's vegdist
 # data need to be transposed first
@@ -34,6 +35,9 @@ moss.matrix <- vegdist(moss, method="euclidean")
 moss.clust <- hclust(moss.matrix) # makes a hierarchical cluster object
 plot(moss.clust)
 
+quad <- read.csv("data/quadrats.csv")
+specnumber(quad)
+diversity(quad)
 
 # Vltava data sets from David Zeleny's website: 
 # https://anadat-r.davidzeleny.net/doku.php/en:data:vltava
