@@ -49,8 +49,8 @@ vltava.matrix <- vegdist(vltava.spe, method="bray")
 vltava.clust <- hclust(vltava.matrix) # makes a hierarchical cluster object
 plot(vltava.clust)
 
-png ('pcoa_nmds.png', width = 8, height = 4, units = 'in', res = 300, pointsize = 11)
-par (mfrow = c(1,2))
+#png ('pcoa_nmds.png', width = 8, height = 4, units = 'in', res = 300, pointsize = 11)
+#par (mfrow = c(1,2))
 pcoa <- capscale (log1p (vltava.spe) ~ 1, distance = 'bray', sqrt.dist = TRUE, scaling = 1)
 plot (pcoa, main = 'PCoA (MDS)', type = 'n')
 points (pcoa, display = 'si', col = vltava.env$GROUP, pch = vltava.env$GROUP)
